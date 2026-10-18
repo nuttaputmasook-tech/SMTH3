@@ -1,0 +1,269 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 12px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at top, #202c5c, #080c22 70%);
+  color: #f8efff;
+  font-family: 'Kanit', sans-serif;
+  text-align: center;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.card {
+  z-index: 1;
+  width: min(100%, 530px);
+  min-height: 660px;
+  padding: 25px;
+  border: 1px solid #ffffff25;
+  border-radius: 28px;
+  background: #111832eF;
+  box-shadow: 0 20px 70px #0007;
+  display: flex;
+  flex-direction: column;
+}
+
+.small-title {
+  color: #c7b8ff;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.progress {
+  height: 3px;
+  background: #ffffff20;
+  margin: 18px 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#bar {
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, #b9a7ff, #ff91bd);
+  transition: width .4s;
+}
+
+.scene {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: appear .6s ease;
+}
+
+.scene.active {
+  display: flex;
+}
+
+.scene > p {
+  line-height: 1.9;
+  color: #cbc9e9;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h1 span {
+  color: #ff91bd;
+}
+
+h2 {
+  color: #f898c7;
+  font-size: 25px;
+}
+
+.moon {
+  font-size: 100px;
+  color: #fff1d4;
+  text-shadow: 0 0 35px #d6b9ff;
+  animation: float 3s ease-in-out infinite;
+}
+
+.constellation {
+  font-size: 35px;
+  color: #ffdbf0;
+  text-shadow: 0 0 20px #c9b6ff;
+  margin: 35px 0;
+}
+
+.letter {
+  background: linear-gradient(135deg, #fff8ed, #eee4ff);
+  color: #55435e;
+  text-align: left;
+  padding: 22px;
+  border-radius: 8px;
+  box-shadow: 0 12px 35px #0003;
+  transform: rotate(-1deg);
+  margin: 15px 0;
+}
+
+.letter p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.signature {
+  text-align: right;
+  color: #a65b88;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.next, #yes, #think {
+  border: 0;
+  border-radius: 30px;
+  padding: 12px 22px;
+  margin: 7px;
+  font-size: 14px;
+}
+
+.next, #yes {
+  color: #32172f;
+  background: linear-gradient(110deg, #ffd0e4, #ff8fbc);
+  box-shadow: 0 7px 25px #ef75ae30;
+}
+
+#think {
+  color: #f2eaff;
+  background: #ffffff0b;
+  border: 1px solid #b9a8e680;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.big-heart {
+  font-size: 80px;
+  color: #ff8cba;
+  text-shadow: 0 0 30px #ff7eb8;
+  animation: beat 1.5s infinite;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#response {
+  min-height: 45px;
+  color: #ffc0dc;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.restart {
+  border: 0;
+  background: transparent;
+  color: #a8a3d4;
+  padding: 10px;
+}
+
+footer {
+  padding-top: 20px;
+  color: #888bb7;
+  font-size: 10px;
+}
+
+#music {
+  position: fixed;
+  z-index: 3;
+  bottom: 18px;
+  right: 15px;
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  padding: 10px 15px;
+  color: white;
+  background: #20274b;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.15); }
+}
+
+@keyframes float {
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 400px) {
+  .card { padding: 18px; }
+  .letter { padding: 16px; }
+  h2 { font-size: 22px; }
+}
+
+#yes {
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.35);
+}
+
+#yes:hover {
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.65);
+}
+
+#think {
+  position: relative;
+  z-index: 3;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#think:disabled,
+#yes:disabled {
+  cursor: default;
+}
+
+#response {
+  white-space: normal;
+  line-height: 1.8;
+  margin-top: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#response.show {
+  opacity: 1;
+}
+
+
+.card,
+.card-content,
+.scene {
+  overflow: visible !important;
+}
+
+#think {
+  position: relative;
+  z-index: 100;
+  transition: left 0.35s ease, top 0.35s ease;
+}
